@@ -1,0 +1,19 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "basePath": "/api",
+    "schemes": [
+      "http", "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ]
+  }
