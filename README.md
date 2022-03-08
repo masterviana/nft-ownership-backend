@@ -1,11 +1,11 @@
 # Backend to support NFT ownership nodejs
 
 
-## deploy URL
+## Deployed URL
 
 https://nft-ownership-backend.herokuapp.com/
 
-# get NFT for wallett
+# Route to search NFT 
 
 ### url
 `POST /api/v1/chainquery`
