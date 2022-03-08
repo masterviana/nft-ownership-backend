@@ -1,5 +1,9 @@
 # Backend to support NFT ownership nodejs
 
+## how to configure the backend for filters
+
+In order to filter for a specific contract address should be added the contract address to the list on file "OwnedTokensContracts.json" within folder filters. 
+
 
 ## Deployed URL
 
