@@ -11,18 +11,17 @@ https://nft-ownership-backend.herokuapp.com/
 `POST /api/v1/chainquery`
 
 ### body 
-`
+```
 {
     "wallet" : "0x3Ca48686212Af897019a8E89140e64E8F2cC2f30",
     "options" : {
         "chain" : "mumbai"
     }
 }
-`
+```
 ### response
 
-`
-
+```
 {
     "data": {
         "totalFilter": <total_filtered>,
@@ -43,4 +42,4 @@ https://nft-ownership-backend.herokuapp.com/
          ]
       }
 }
-`
+```
