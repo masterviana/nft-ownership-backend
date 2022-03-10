@@ -38,6 +38,9 @@ if(process.env.USE_REDIS === 'true')
 }
 
 const Database = {
+    storeMetacraft: async (data, options) => {
+        return await Mongo.metacraft.create(data, options)
+    },
     storeTodo: async (data, options) => {
         return await Mongo.todo.create(data, options)
     },

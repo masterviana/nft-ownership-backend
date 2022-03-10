@@ -3,6 +3,7 @@
 const express = require("express");
 const getAppInfo = require("$core-services/getAppInfo");
 const axios = require('axios')
+const { storeMetacraft  } = require("$services/metacraft");
 
 const router = new express.Router();
 const {TwitterApi} = require('twitter-api-v2');
@@ -97,13 +98,17 @@ router.get("/many", async (request, response) => {
 
   });
 
-router.post("/", async (request, response) =>
+router.post("/store", async (request, response) =>
 {
     try{
-        const added =  await createTodo(request.body  );
+        if(!request.body.username ) throw "Should supply username"
+        if(!request.body.wallet ) throw "Should supply wallet"
+        if(!request.body.items ) throw "Should supply items"
+
+        const added =  await storeMetacraft(request.body  );
         response.status(200).json(added);
     }catch(ex){
-        console.error('get todo ',  ex);
+        console.error('created storeMetacraft ',  ex);
         response.status(500).json({error : ex});
     }
 });
