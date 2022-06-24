@@ -81,7 +81,7 @@ let searchMoralisERC1155 = async function(walletAddress, options)
               'X-API-Key': process.env.MORALIS_APP_KEY,
               'Content-Type' : 'application/json'
             }
-          });
+        });
 
         console.log('Result from axios total: ', res.data.total );
 
@@ -93,5 +93,48 @@ let searchMoralisERC1155 = async function(walletAddress, options)
     }
 }
 
+let readApprovedProjects = async function()
+{
 
-module.exports = { erc1155Ownership , searchMoralisERC1155 };
+  try
+  {
+
+    const BASE_PATH = 'https://raw.githubusercontent.com/Web3bazaar/project-submissions/master/projects/';
+    let projects = [];
+
+    const fileList = 
+          await axios.get( BASE_PATH + 'index.json' , {
+            headers: {
+              'Content-Type' : 'application/json'
+            }
+     });
+
+    console.log('File list ', fileList.data );
+
+   
+     for(let i in fileList.data)
+     {
+      let fileName = fileList.data[i]
+      console.log('url of project ',  BASE_PATH + fileName );
+      let projectData = 
+          await axios.get( BASE_PATH + fileName , 
+          {
+                headers: {
+                  'Content-Type' : 'application/json'
+                }
+          });
+          // console.log('project data ', projectData );
+          projects.push(projectData.data)
+      }    
+    return {"projects" :  projects}
+
+  }catch(ex)
+  {
+    // logDebug('Error reading github ', ex)
+    throw ex;
+  }
+  
+}
+
+
+module.exports = { erc1155Ownership , searchMoralisERC1155, readApprovedProjects  };
